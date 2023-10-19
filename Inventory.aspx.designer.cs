@@ -11,16 +11,16 @@ namespace WebApplication2
 {
 
 
-    public partial class Contact
+    public partial class Inventory
     {
 
         /// <summary>
-        /// gvToDoListOverview control.
+        /// GvInventory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvToDoListOverview;
+        protected global::System.Web.UI.WebControls.GridView GvInventory;
     }
 }
