@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
+using System.Threading;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -29,16 +31,31 @@ namespace WebApplication2
 
                 using (SqlCommand cmd = new SqlCommand("ValidateUser", conn))
                 {
+                    int count = 0;
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new SqlParameter("@Username", SqlDbType.NVarChar, 50) { Value = username });
                     cmd.Parameters.Add(new SqlParameter("@Password", SqlDbType.NVarChar, 50) { Value = password });
 
-                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+                    object DatabaseValue = cmd.ExecuteScalar();
+
+
+                    if (DatabaseValue is DBNull || DatabaseValue is null )
+                    {
+                        count = 0;
+                        
+                    }
+                    else
+                    {
+                        Console.WriteLine("error #43");
+                        count = Convert.ToInt32(DatabaseValue);
+                    }
+
+                    
 
                     if (count > 0)
                     {
 
-                        // Create a Forms Authentication ticket
+  
                         FormsAuthentication.SetAuthCookie(username, false);
 
                         return true;
@@ -46,6 +63,7 @@ namespace WebApplication2
                     else;
                     {
                         return false;
+
                     }
                             
 
@@ -69,7 +87,7 @@ namespace WebApplication2
             }
             else
             {
-                // Display an error message or redirect to an error page
+                Response.Redirect("~/pages/login.aspx");
             }
         }
     }
