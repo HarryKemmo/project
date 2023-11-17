@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -21,7 +22,6 @@ namespace WebApplication2
 
         protected bool AuthenticateUser(string username, string password)
         {
-            string query = "SELECT UserId, Username FROM Users WHERE Username = @Username AND Password = @Password";
 
             using (SqlConnection conn = new SqlConnection(System.Configuration.ConfigurationManager.ConnectionStrings["Hardware"].ConnectionString))
             {
@@ -33,28 +33,23 @@ namespace WebApplication2
                     cmd.Parameters.Add(new SqlParameter("@Username", SqlDbType.NVarChar, 50) { Value = username });
                     cmd.Parameters.Add(new SqlParameter("@Password", SqlDbType.NVarChar, 50) { Value = password });
 
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    if (count > 0)
                     {
-                        if (reader.Read())
-                        {
-                            // Authentication successful
-                            int userId = reader.GetInt32(0);
-                            string userName = reader.GetString(1);
 
-                            // Create a Forms Authentication ticket
-                            FormsAuthentication.SetAuthCookie(userName, false);
+                        // Create a Forms Authentication ticket
+                        FormsAuthentication.SetAuthCookie(username, false);
 
-                            // You can store additional user information in session or other storage if needed
-                            Session["UserId"] = userId;
-
-                            return true;
-                        }
-                        else
-                        {
-                            // Authentication failed
-                            return false;
-                        }
+                        return true;
                     }
+                    else;
+                    {
+                        return false;
+                    }
+                            
+
+                    
                 }
 
 
