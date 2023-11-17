@@ -62,6 +62,8 @@ namespace WebApplication2
                     }
                     else;
                     {
+                        //txtPassword.PlaceholderText = 
+                        
                         return false;
 
                     }
