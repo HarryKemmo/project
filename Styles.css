@@ -24,4 +24,124 @@
     max-height: 100px;
 }
 
+.login-container {
+    width: 400px;
+    padding: 32px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.login-input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.login-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #007acc;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+    .login-button:hover {
+        background-color: #005580;
+    }
+
+.result-label {
+    color: red;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.dashboard-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-title {
+    font-size: 24px;
+    color: #333;
+}
+
+.dashboard-info {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.dashboard-info-item {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+    .dashboard-info-item h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #555;
+    }
+
+.dashboard-value {
+    font-size: 20px;
+    font-weight: bold;
+    color: #007acc;
+}
+
+.dashboard-table {
+    margin-top: 20px;
+}
+
+.gridview {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.grid-header {
+    background-color: #007acc;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.grid-item {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.empty-table {
+    color: #555;
+    padding: 10px;
+    text-align: center;
+}
 </style >
